@@ -8,7 +8,11 @@ router.get('/justify', (req,res)=>{
 })
 
 router.post('/justify', (req,res)=>{
-    res.send({type :'POST'});
+    res.send({
+        type :'POST',
+        unjustifiedText : req.body.text,
+        justifiedText : "I'm still working on the justified text result ..."
+    });
 })
 
 router.put('/justify/:id', (req,res)=>{
