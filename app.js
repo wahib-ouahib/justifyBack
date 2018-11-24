@@ -2,7 +2,7 @@ const express = require ('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const routes = require('./app/routes/api');
-
+//const justify = require('./app/JustifyAlgo/justify');
 
 
 //setup express
@@ -11,7 +11,7 @@ const app = express();
 
 
 //body parser
-app.use(bodyParser.json()); 
+app.use(bodyParser()); 
 
 //using routes on routes file ---- > app's middleware
 app.use('/api',routes);
