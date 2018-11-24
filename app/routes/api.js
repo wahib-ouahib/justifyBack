@@ -7,6 +7,8 @@ router.get('/justify', (req,res)=>{
     res.end()
 })
 
+
+//Post the output (the justified text)
 router.post('/justify', (req,res)=>{
     res.send({
         type :'POST',
