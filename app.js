@@ -13,8 +13,8 @@ mongoose.connect('mongodb://wahib:' +process.env.MONGO_ATLAS_PW+ '@justifybackdb
 });
 
 //body parser (using body whith a ContentType of text/plain)
-app.use(bodyParser.text()); 
 app.use(bodyParser.urlencoded({extended: true})); 
+app.use(bodyParser.text()); 
 app.use(bodyParser.json()); 
 
 //using routes on routes file form of URL/api/... (Check api.js for middleware)
@@ -27,7 +27,7 @@ app.use((req, res, next)=>{
     next(error);
 })
 app.use((error, req, res, next)=>{
-    res.status(err.status || 500);
+    res.status(error.status || 500);
     res.json({
         error: {
             message: error.message
