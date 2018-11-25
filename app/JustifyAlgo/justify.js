@@ -114,7 +114,5 @@ string_to_array = function (str) {
     return str.trim().split(" ");
 };
 
-arrayText = string_to_array("Lorem ipsum dolor sit amet consectetur adipisicing elit Blanditiis fugit veniam facere, cumque fug Lorem ipsum dolor sit amet consectetur adipisicing elit Blanditiis fugit veniam facere, cumque fug Lorem ipsum dolor sit amet consectetur adipisicing elit Blanditiis fugit veniam facere, cumque fug Lorem ipsum dolor sit amet consectetur adipisicing elit Blanditiis fugit veniam facere, cumque fug Lorem ipsum dolor sit amet consectetur adipisicing elit Blanditiis fugit veniam facere, cumque fug")
-
-console.log(fullJustify(arrayText,80));
+module.exports = {fullJustify, string_to_array};
 
