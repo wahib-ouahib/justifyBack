@@ -11,7 +11,7 @@ const app = express();
 
 
 //body parser
-app.use(bodyParser()); 
+app.use(bodyParser.text()); 
 
 //using routes on routes file ---- > app's middleware
 app.use('/api',routes);

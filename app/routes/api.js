@@ -10,12 +10,12 @@ router.get('/justify', (req,res)=>{
 })
 
 
-//Post the input ( ujustified text)
+//Post the input (ujustified text)
 router.post('/justify', (req,res)=>{
     console.log('POST method triggered');       
     
 
-                                                 //the justification Algorithm goes here
+                                         //the justification Algorithm goes here
     /**
      * @param {string[]} words
      * @param {number} maxWidth
@@ -132,10 +132,11 @@ router.post('/justify', (req,res)=>{
         return str.trim().split(" ");
     };
 
-    arrayText = string_to_array("Lorem ipsum dolor sit amet consectetur adipisicing elit Blanditiis fugit veniam facere, cumque fug Lorem ipsum dolor sit amet consectetur adipisicing elit Blanditiis fugit veniam facere, cumque fug Lorem ipsum dolor sit amet consectetur adipisicing elit Blanditiis fugit veniam facere, cumque fug Lorem ipsum dolor sit amet consectetur adipisicing elit Blanditiis fugit veniam facere, cumque fug Lorem ipsum dolor sit amet consectetur adipisicing elit Blanditiis fugit veniam facere, cumque fug")
 
-    res.send(fullJustify(arrayText,80));
+    //res.send(fullJustify(arrayText,80));
 
+    res.send(fullJustify(string_to_array(req.body),80));
+    
 
     })
 
