@@ -12,10 +12,10 @@ router.get('/justify', (req,res)=>{
 })
 
 //Post the input (unjustified text)
-router.post('/justify', (req,res)=>{
+router.post('/justify', (req, res, next)=>{
     console.log('POST method triggered'); 
     const nbrMots = string_to_array(req.body).length;
-    const text = new Texts({
+  /*  const text = new Texts({
         //_id: new mongoose.Types.ObjectId,
         size: string_to_array(req.body).length
     })
@@ -31,21 +31,21 @@ router.post('/justify', (req,res)=>{
         res.status(500).json({
             error: err
         });
-    })
-       
+    })*/
+    
+    Texts.create({size: string_to_array(req.body).length})
+        .then((x)=>console.log('created doc ' + x))
+        .catch(next);
+    var smth = 0;
     console.log("nbre de mots justifiés : "+nbrMots); 
-    Texts.find()
-        .exec()
-        .then(doc => console.log('from DB' + doc)) 
-        .catch(err => {
-            console.log(err);
-            res.status(500).json({error: err});
-        })
-            
-        
+    Texts.find({}, (err, text) => {
+        if(err){console.log(error)}
+        text.map(text=>{smth+=text.size;})
+        console.log('blabla' +smth);
+    });
     
-    
-    console.log('text.size = '+ text.size)
+
+    //console.log('text.size = '+ x.size)
     
     console.log(`Vous pouvez encore justifier ${80000-nbrMots} mots :) .`);
     if(nbrMots<=200){
