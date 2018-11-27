@@ -15,19 +15,48 @@ router.get('/justify', (req,res)=>{
 router.post('/justify', (req,res)=>{
     console.log('POST method triggered'); 
     const nbrMots = string_to_array(req.body).length;
-    const nbr = new Texts({
+    const text = new Texts({
         //_id: new mongoose.Types.ObjectId,
         size: string_to_array(req.body).length
     })
-    nbr.save().then(result=>console.log(result));
+    
+    //saving data
+    text.save()
+    .then(result=>{
+        console.log('saved ' + result);
         
-    //console.log("nbre de mots justifiés : "+nbrMots);   
-    //console.log(`Vous pouvez encore justifier ${80000-nbrMots} mots :) .`);
-    //res.send(["nbre de mots justifiés:"+ nbrMots]);
-    res.send((justify.fullJustify(string_to_array(req.body),80)));
-    });
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json({
+            error: err
+        });
+    })
+       
+    console.log("nbre de mots justifiés : "+nbrMots); 
+    Texts.find()
+        .exec()
+        .then(doc => console.log('from DB' + doc)) 
+        .catch(err => {
+            console.log(err);
+            res.status(500).json({error: err});
+        })
+            
+        
+    
+    
+    console.log('text.size = '+ text.size)
+    
+    console.log(`Vous pouvez encore justifier ${80000-nbrMots} mots :) .`);
+    if(nbrMots<=200){
+        res.send((justify.fullJustify(string_to_array(req.body),80)));
+    } else {
+        res.send("you should pay dawg :(");
+    }
+    
+});
+
+
 
 //Exporting the route   
-module.exports = router;
-
-
+module.exports = router
