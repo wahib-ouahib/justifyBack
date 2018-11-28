@@ -12,7 +12,7 @@ const app = express();
 mongoose.Promise = global.Promise;
 
 //Connecting to mongoose
-const dbUrl = 'mongodb://wahib:wahib123456*/-+@ds119734.mlab.com:19734/justifyback';
+const dbUrl = 'mongodb://wahib:wahib123@ds119734.mlab.com:19734/justifyback';
 mongoose.connect(dbUrl,{useNewUrlParser: true});
 
 //handling connection to Mongodb Atlas errors
