@@ -1,4 +1,4 @@
-//L'algorithme de justification d'un text passé en caractère
+//l'algorithme de justification d'un text passé en caractère
 /**
  * @param {string[]} words
  * @param {number} maxWidth
