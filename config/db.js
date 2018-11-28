@@ -1,10 +1,9 @@
 const mongoose = require('mongoose');
 
-
+//defining the text schema
 const unjustifiedText = mongoose.Schema({
-    //_id: mongoose.Schema.types.ObjectIdi"
     size: Number
 });
 
-//exporting the module
+//exporting the text schema module
 module.exports = mongoose.model('Texts', unjustifiedText);
