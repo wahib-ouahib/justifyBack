@@ -13,14 +13,25 @@ router.get('/justify', (req,res)=>{
 
 //Post route to get a TOKEN
 router.post('/token', (req, res,next) => {
-    const user = new User({email: req.body.email});
-    user.save()
-        .then(result => {
-            res.status(201).json({
-                message: 'User created'
-            });
+    User.find({email: req.body.email})
+        .exec()
+        .then(user => {
+            if (user){
+                res.status(409).json({
+                    mesage: "mail exists"
+                });
+            }else{
+                const user = new User({email: req.body.email});
+                user.save()
+                    .then(result => {
+                        res.status(201).json({
+                            message: 'User created'
+                        });
+                    })
+                    .catch(next)
+            }
         })
-        .catch(next)
+    
 })
 
 //Post the input (unjustified text)
