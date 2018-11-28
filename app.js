@@ -40,7 +40,7 @@ app.use(function(err, req, res, next){
 })
 
 //specifying the port
-const myPort = 4000 || process.env.port;
+const myPort = process.env.port || 8080;
 
 //listening to port
 app.listen(myPort, ()=>console.log(`we're live  at port ${myPort}`))
