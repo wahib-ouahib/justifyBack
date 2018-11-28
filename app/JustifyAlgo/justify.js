@@ -1,3 +1,4 @@
+//L'algorithme de justification d'un text passé en caractère
 /**
  * @param {string[]} words
  * @param {number} maxWidth
@@ -5,9 +6,7 @@
  */
 var fullJustify = function(words, maxWidth) {
     let text = new Text(maxWidth);
-    
     text.parse(words);
-    
     return text.toStringArr();
 };
 
@@ -57,7 +56,7 @@ function Text (maxWidth){
 }
 function Line (maxLen){
     this.words = [];
-    this.spaces = [];   // 
+    this.spaces = [];   
     this.size = 0;   // Initial size of array
     this.maxLen = maxLen;
     
@@ -110,6 +109,8 @@ function Line (maxLen){
     Line.prototype.canAddWord = canAddWord;
 }
 
+/*take the plain/text and transform it to an array, 
+in order for the fullJustify function to accept it*/
 string_to_array = function (str) {
     return str.trim().split(" ");
 };
