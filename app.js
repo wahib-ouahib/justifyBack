@@ -1,7 +1,9 @@
-const express = require ('express');
+//Calling modules and dependencies
+const express    = require ('express');
 const bodyParser = require('body-parser');
-const routes = require('./app/routes/api');
-const mongoose = require('mongoose');
+const morgan     = require('morgan');
+const routes     = require('./app/routes/api');
+const mongoose   = require('mongoose');
 
 //seting up express
 const app = express();
@@ -17,10 +19,12 @@ mongoose.connect(dbUrl,{useNewUrlParser: true});
 mongoose.connection.on('connected', () => {    
     console.log(`mongoose connection open to dbUrl`); 
  });
- 
  mongoose.connection.on('error', (err) => {    
    console.log(`mongoose connection err: `, err); 
  });
+
+//using morgan
+app.use(morgan('dev'));
 
 //body parser (using body whith a ContentType of text/plain)
 app.use(bodyParser.urlencoded({extended: true})); 
