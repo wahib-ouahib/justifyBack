@@ -17,7 +17,7 @@ mongoose.connect(MONGODB_URI,{useNewUrlParser: true});
 
 //handling connection to Mongodb Atlas errors
 mongoose.connection.on('connected', () => {    
-    console.log(`mongoose connection open to dbUrl`); 
+    console.log(`mongoose connection open to MONGODB_URI`); 
  });
  mongoose.connection.on('error', (err) => {    
    console.log(`mongoose connection err: `, err); 
