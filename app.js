@@ -12,12 +12,12 @@ const app = express();
 mongoose.Promise = global.Promise;
 
 //Connecting to mongoose
-const MONGODB_URI = 'mongodb://wahib:wahib123@ds119734.mlab.com:19734/justifyback';
-mongoose.connect(MONGODB_URI,{useNewUrlParser: true});
+const dbUrl = 'mongodb://wahib:'+process.env.MONGO_ATLAS_PW+'@cluster0-shard-00-00-auv4t.mongodb.net:27017,cluster0-shard-00-01-auv4t.mongodb.net:27017,cluster0-shard-00-02-auv4t.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true';
+mongoose.connect(dbUrl,{useNewUrlParser: true});
 
 //handling connection to Mongodb Atlas errors
 mongoose.connection.on('connected', () => {    
-    console.log(`mongoose connection open to MONGODB_URI`); 
+    console.log(`mongoose connection open to dbUrl`); 
  });
  mongoose.connection.on('error', (err) => {    
    console.log(`mongoose connection err: `, err); 
@@ -40,10 +40,10 @@ app.use(function(err, req, res, next){
 })
 
 //specifying the port
-const PORT = process.env.PORT || 8080;
+const myPort = 4000 || process.env.port;
 
 //listening to port
-app.listen(PORT, ()=>console.log(`we're live  at port ${PORT}`))
+app.listen(myPort, ()=>console.log(`we're live  at port ${myPort}`))
 
 
 
