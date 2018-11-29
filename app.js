@@ -12,8 +12,8 @@ const app = express();
 mongoose.Promise = global.Promise;
 
 //Connecting to mongoose
-const dbUrl = 'mongodb://wahib:wahib123@ds119734.mlab.com:19734/justifyback';
-mongoose.connect(dbUrl,{useNewUrlParser: true});
+const MONGODB_URI = 'mongodb://wahib:wahib123@ds119734.mlab.com:19734/justifyback';
+mongoose.connect(MONGODB_URI,{useNewUrlParser: true});
 
 //handling connection to Mongodb Atlas errors
 mongoose.connection.on('connected', () => {    
@@ -40,10 +40,10 @@ app.use(function(err, req, res, next){
 })
 
 //specifying the port
-const myPort = process.env.port || 8080;
+const PORT = process.env.PORT || 8080;
 
 //listening to port
-app.listen(myPort, ()=>console.log(`we're live  at port ${myPort}`))
+app.listen(PORT, ()=>console.log(`we're live  at port ${PORT}`))
 
 
 
