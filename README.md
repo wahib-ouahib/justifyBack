@@ -1,4 +1,4 @@
-# justifyBackk
+# justify
 
 Restful API that takes unjustified text as an intput and return its justified version as an output
 
