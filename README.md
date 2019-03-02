@@ -4,7 +4,7 @@ Restful API that takes unjustified text as an intput and return its justified ve
 
 
 # Technologies/Dependecies
-
+s
 nodejs/expressJS/mongodb/mongoose/body-parser/JWT/morgan/Nodemon/mlab
 
 
